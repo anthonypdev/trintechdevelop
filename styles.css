@@ -8,7 +8,7 @@ html, body, #root, .App {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #000;
+    background-color: transparent;
     color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -20,7 +20,7 @@ html, body, #root, .App {
     padding: 0 20px;
 }
 
-/* Navigation matching old site layout */
+/* Navigation with liquid glass styling */
 .nav {
     position: fixed;
     top: 0;
@@ -28,18 +28,41 @@ html, body, #root, .App {
     right: 0;
     z-index: 100;
     padding: 0.5rem 0;
+    
+    /* Core filter for distortion and color enhancement */
+    backdrop-filter: blur(14px) brightness(1.2) contrast(1.2) saturate(180%);
+    
+    /* Layered backgrounds for texture and depth */
+    background: 
+        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 4px);
+    
+    /* Complex shadows for a floating, layered appearance */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 0 0 0.5px rgba(255, 255, 255, 0.05);
+    
+    /* Fine borders to define the glass edge */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    
     transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.nav::before {
-    content: '';
+/* The ::after pseudo-element for final overlay effect */
+.nav::after {
+    content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(5, 5, 5, 0.6);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.02) 100%);
+    pointer-events: none;
+    mix-blend-mode: overlay;
 }
 
 .nav-container {
@@ -47,6 +70,8 @@ html, body, #root, .App {
     align-items: center;
     justify-content: space-between;
     height: 45px;
+    position: relative;
+    z-index: 1;
 }
 
 .nav-logo {
@@ -111,7 +136,7 @@ main {
 }
 
 .hero-logo {
-    height: 120px;
+    height: 600px;
     width: auto;
     margin-bottom: 2rem;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
