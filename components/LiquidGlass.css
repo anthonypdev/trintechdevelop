@@ -1,245 +1,198 @@
-/*
-  CSS for the LiquidGlassHeader component.
-  These styles create a multi-layered "liquid glass" effect with depth,
-  texture, and spectrochromatic qualities.
-*/
-.liquid-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  
-  /* Core filter for distortion and color enhancement */
-  backdrop-filter: blur(14px) brightness(1.2) contrast(1.2) saturate(180%);
-  
-  /* Layered backgrounds for texture and depth */
-  background: 
-    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 4px);
-  
-  /* Complex shadows for a floating, layered appearance */
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    0 0 0 0.5px rgba(255, 255, 255, 0.05);
-  
-  /* Fine borders to define the glass edge */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
-  
-  z-index: 10;
-  pointer-events: auto;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Glass CSS Overhaul</title>
+    <style>
+        /* --- 1. CORE LIQUID GLASS STYLES --- */
 
-/* The ::after pseudo-element is critical for the final overlay effect.
-  It adds a color gradient with a specific blend mode that cannot be
-  achieved with inline styles in React.
-*/
-.liquid-header::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.02) 100%);
-  pointer-events: none;
-  mix-blend-mode: overlay;
-}
+        :root {
+            /* Main Effect Variables */
+            --lg-tint-color: 255, 255, 255;
+            --lg-tint-opacity: 0.04;
+            --lg-frost-blur: 12px; 
+            --lg-distortion-scale: 77;
 
-.liquid-header h1 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
-  z-index: 1; /* Ensures text is rendered above the ::after overlay */
-  position: relative;
-}
+            /* Shadow & Glow Variables */
+            --lg-inset-glow-blur: 30px; 
+            --lg-inset-glow-spread: -2px;
+            --lg-inset-glow-color: rgba(255, 255, 255, 0.7);
+            --lg-drop-shadow-blur: 40px; 
+        }
 
-.liquid-button {
-  padding: 10px 22px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 12px;
-  color: #fff;
-  background:
-    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0px, rgba(255, 255, 255, 0.015) 1px, transparent 1px, transparent 4px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 6px 20px rgba(0, 0, 0, 0.35),
-    0 0 0 0.5px rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(14px) brightness(1.1) contrast(1.2) saturate(180%);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
+        /* The main .liquid-glass class to be applied to any element */
+        .liquid-glass {
+            position: relative; 
+            background: transparent; /* Parent must be transparent */
+            overflow: hidden; 
+            z-index: 1;
+        }
 
-.liquid-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
+        /* This pseudo-element handles the INSET BLUR on the EDGES and the inset glow */
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1; 
+            border-radius: inherit; /* Inherit border-radius from parent */
+            
+            /* Inset white glow */
+            box-shadow: inset 0 0 var(--lg-inset-glow-blur) var(--lg-inset-glow-spread) var(--lg-inset-glow-color);
+            
+            /* Inset blur effect */
+            backdrop-filter: blur(var(--lg-frost-blur));
+            -webkit-backdrop-filter: blur(var(--lg-frost-blur));
 
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
+            /* Mask to make the blur only apply to the edges */
+            mask: url(#edge-blur-mask);
+            -webkit-mask: url(#edge-blur-mask);
+        }
 
-.liquid-glass-modal {
-  width: 100%;
-  max-width: 900px;
-  max-height: 80vh;
-  background:
-    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 4px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  backdrop-filter: blur(20px) brightness(1.1) contrast(1.2) saturate(180%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 0 0.5px rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  position: relative;
-}
+        /* This pseudo-element handles the FULL SURFACE liquid distortion */
+        .liquid-glass::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -2; 
+            border-radius: inherit; /* Inherit border-radius from parent */
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+            /* This captures the background for the filter to use */
+            backdrop-filter: blur(0.1px);
+            -webkit-backdrop-filter: blur(0.1px);
 
-.modal-nav {
-  display: flex;
-  gap: 0.5rem;
-}
+            /* Liquid distortion over the whole element */
+            filter: url(#glass-distortion);
 
-.modal-nav-btn {
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+            /* The subtle tint is applied to the distorted layer */
+            background-color: rgba(var(--lg-tint-color), var(--lg-tint-opacity));
+        }
 
-.modal-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
-}
+        /* Wrapper for your content to ensure it sits on top of the effects */
+        .liquid-glass-content {
+            position: relative;
+            z-index: 1;
+        }
 
-.modal-nav-btn.active {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-}
+        /* --- 2. YOUR COMPONENT STYLES, ADAPTED FOR LIQUID GLASS --- */
 
-.modal-close {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 300;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
+        .liquid-header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            border-radius: 24px; /* Rounded corners for the effect */
+            box-shadow: 0px 16px var(--lg-drop-shadow-blur) rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.modal-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
+        .liquid-header h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.15);
+        }
 
-.modal-content {
-  padding: 2rem;
-  overflow-y: auto;
-  max-height: calc(80vh - 140px);
-}
+        .liquid-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 16px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .liquid-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.4);
+        }
 
-.modal-section {
-  text-align: center;
-}
+        .liquid-card {
+            width: 320px;
+            height: 220px;
+            padding: 24px;
+            border-radius: 28px;
+            box-shadow: 0px 16px var(--lg-drop-shadow-blur) rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .liquid-card h2 {
+            margin-bottom: 12px;
+        }
 
-.modal-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
+        /* --- DEMO STYLES (You can ignore these) --- */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 120px; /* Make space for the fixed header */
+            background: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfDB8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+        }
+    </style>
+</head>
+<body>
 
-.modal-subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
+    <!-- --- 3. EXAMPLE HTML STRUCTURES --- -->
 
-.modal-text {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
+    <!-- Example Header -->
+    <header class="liquid-glass liquid-header">
+        <div class="liquid-glass-content">
+            <h1>Liquid Glass Header</h1>
+        </div>
+    </header>
 
-.products-preview {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+    <!-- Example Card -->
+    <div class="liquid-glass liquid-card">
+        <div class="liquid-glass-content">
+            <h2>Card Title</h2>
+            <p>This is some content inside a liquid glass card.</p>
+        </div>
+    </div>
 
-.product-item {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-}
+    <!-- Example Button -->
+    <button class="liquid-glass liquid-button">
+        <span class="liquid-glass-content">Click Me</span>
+    </button>
 
-.product-item h3 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
-}
 
-.product-item p {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-}
+    <!-- --- 4. SVG DEFINITIONS (Required in your HTML body) --- -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute; overflow:hidden; z-index: -100;">
+        <defs>
+            <!-- Filter for the liquid distortion effect -->
+            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="92" result="noise" />
+                <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+                <feDisplacementMap in="SourceGraphic" in2="blurred" scale="77" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            
+            <!-- Mask to create the inset blur effect on the edges only -->
+            <mask id="edge-blur-mask" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="1">
+                <rect width="1" height="1" fill="white" rx="0.09" /> 
+                <rect x="0.1" y="0.15" width="0.8" height="0.7" fill="black" rx="0.06" />
+            </mask>
+        </defs>
+    </svg>
 
-.modal-cta {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
+</body>
+</html>

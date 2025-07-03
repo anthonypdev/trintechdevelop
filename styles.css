@@ -20,6 +20,74 @@ html, body, #root, .App {
     padding: 0 20px;
 }
 
+/* Import liquid glass core styles */
+:root {
+    /* Main Effect Variables */
+    --lg-tint-color: 255, 255, 255;
+    --lg-tint-opacity: 0.04;
+    --lg-frost-blur: 12px; 
+    --lg-distortion-scale: 77;
+
+    /* Shadow & Glow Variables */
+    --lg-inset-glow-blur: 30px; 
+    --lg-inset-glow-spread: -2px;
+    --lg-inset-glow-color: rgba(255, 255, 255, 0.7);
+    --lg-drop-shadow-blur: 40px; 
+}
+
+/* The main .liquid-glass class to be applied to any element */
+.liquid-glass {
+    position: relative; 
+    background: transparent; /* Parent must be transparent */
+    overflow: hidden; 
+    z-index: 1;
+}
+
+/* This pseudo-element handles the INSET BLUR on the EDGES and the inset glow */
+.liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1; 
+    border-radius: inherit; /* Inherit border-radius from parent */
+    
+    /* Inset white glow */
+    box-shadow: inset 0 0 var(--lg-inset-glow-blur) var(--lg-inset-glow-spread) var(--lg-inset-glow-color);
+    
+    /* Inset blur effect */
+    backdrop-filter: blur(var(--lg-frost-blur));
+    -webkit-backdrop-filter: blur(var(--lg-frost-blur));
+
+    /* Mask to make the blur only apply to the edges */
+    mask: url(#edge-blur-mask);
+    -webkit-mask: url(#edge-blur-mask);
+}
+
+/* This pseudo-element handles the FULL SURFACE liquid distortion */
+.liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2; 
+    border-radius: inherit; /* Inherit border-radius from parent */
+
+    /* This captures the background for the filter to use */
+    backdrop-filter: blur(0.1px);
+    -webkit-backdrop-filter: blur(0.1px);
+
+    /* Liquid distortion over the whole element */
+    filter: url(#glass-distortion);
+
+    /* The subtle tint is applied to the distorted layer */
+    background-color: rgba(var(--lg-tint-color), var(--lg-tint-opacity));
+}
+
+/* Wrapper for your content to ensure it sits on top of the effects */
+.liquid-glass-content {
+    position: relative;
+    z-index: 1;
+}
+
 /* Navigation with liquid glass styling */
 .nav {
     position: fixed;
@@ -28,62 +96,17 @@ html, body, #root, .App {
     right: 0;
     z-index: 100;
     padding: 1rem 0;
-    
-    /* Core filter for distortion and color enhancement */
-    backdrop-filter: blur(14px) brightness(1.2) contrast(1.2) saturate(180%);
-    
-    /* Layered backgrounds for texture and depth */
-    background: 
-        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 4px);
-    
-    /* Complex shadows for a floating, layered appearance */
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-        0 8px 32px rgba(0, 0, 0, 0.35),
-        0 0 0 0.5px rgba(255, 255, 255, 0.05);
-    
-    /* Fine borders to define the glass edge */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    
+    box-shadow: 0px 8px var(--lg-drop-shadow-blur) rgba(0, 0, 0, 0.35);
     transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .nav.scrolled {
     padding: 0.75rem 0;
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-        0 8px 32px rgba(0, 0, 0, 0.5),
-        0 0 0 0.5px rgba(255, 255, 255, 0.05);
-}
-
-.nav.scrolled::before {
-    background: 
-        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 4px);
-    border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
 .nav.scrolled .nav-container {
     height: 45px;
-}
-
-
-/* The ::after pseudo-element for final overlay effect */
-.nav::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.02) 100%);
-    pointer-events: none;
-    mix-blend-mode: overlay;
 }
 
 .nav-container {
@@ -117,14 +140,10 @@ html, body, #root, .App {
     display: flex;
     list-style: none;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.02);
     padding: 0.5rem;
     border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.05),
-        0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-link {

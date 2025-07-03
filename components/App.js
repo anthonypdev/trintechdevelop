@@ -8,18 +8,20 @@ function App() {
         <div className="App">
             <ShaderBackground canvasRef={shaderCanvasRef} />
             
-            <nav className="nav" id="nav">
-                <div className="container">
+            <nav className="nav liquid-glass" id="nav">
+                <div className="container liquid-glass-content">
                     <div className="nav-container">
                         <a href="#" className="nav-logo">
                             <span>TrinityAI</span>
                         </a>
 
-                        <ul className="nav-menu">
-                            <li><a href="#home" className="nav-link">Home</a></li>
-                            <li><a href="#products" className="nav-link">Products</a></li>
-                            <li><a href="#about" className="nav-link">About</a></li>
-                            <li><a href="#portfolio" className="nav-link">Portfolio</a></li>
+                        <ul className="nav-menu liquid-glass">
+                            <div className="liquid-glass-content">
+                                <li><a href="#home" className="nav-link">Home</a></li>
+                                <li><a href="#products" className="nav-link">Products</a></li>
+                                <li><a href="#about" className="nav-link">About</a></li>
+                                <li><a href="#portfolio" className="nav-link">Portfolio</a></li>
+                            </div>
                         </ul>
 
                         <div onClick={() => document.getElementById('bottom').scrollIntoView({ behavior: 'smooth' })}>
@@ -86,27 +88,43 @@ function App() {
                         animation: 'ctaPulse 4s ease-in-out infinite'
                     }}></div>
                     <div className="container">
-                        <div className="cta-content" style={{
-                            position: 'relative',
-                            zIndex: 10,
+                        <div className="cta-content liquid-glass" style={{
                             maxWidth: '800px',
                             margin: '0 auto',
-                            background: 'rgba(5, 5, 5, 0.3)',
                             padding: '3rem',
                             borderRadius: '24px',
-                            border: '1px solid rgba(255, 255, 255, 0.05)',
-                            backdropFilter: 'blur(10px)',
-                            boxShadow: 'var(--shadow-elevated), inset 0 1px 2px rgba(255, 255, 255, 0.05)'
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            boxShadow: '0px 16px var(--lg-drop-shadow-blur) rgba(0, 0, 0, 0.35)'
                         }}>
-                            <h2 style={{fontSize: '3rem', marginBottom: '2rem', color: 'white'}}>Ready to Transform Your Business?</h2>
-                            <p style={{fontSize: '1.2rem', color: '#cccccc', marginBottom: '3rem'}}>
-                                Let's discuss how TrinityAI can help bridge the gap between your data and business outcomes.
-                            </p>
-                            <SpectroButton />
+                            <div className="liquid-glass-content">
+                                <h2 style={{fontSize: '3rem', marginBottom: '2rem', color: 'white'}}>Ready to Transform Your Business?</h2>
+                                <p style={{fontSize: '1.2rem', color: '#cccccc', marginBottom: '3rem'}}>
+                                    Let's discuss how TrinityAI can help bridge the gap between your data and business outcomes.
+                                </p>
+                                <SpectroButton />
+                            </div>
                         </div>
                     </div>
                 </section>
             </main>
+            
+            {/* Required SVG filters for liquid glass effect */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style={{position:'absolute', overflow:'hidden', zIndex: -100}}>
+                <defs>
+                    {/* Filter for the liquid distortion effect */}
+                    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="92" result="noise" />
+                        <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+                        <feDisplacementMap in="SourceGraphic" in2="blurred" scale="77" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                    
+                    {/* Mask to create the inset blur effect on the edges only */}
+                    <mask id="edge-blur-mask" maskUnits="objectBoundingBox" x="0" y="0" width="1" height="1">
+                        <rect width="1" height="1" fill="white" rx="0.09" /> 
+                        <rect x="0.1" y="0.15" width="0.8" height="0.7" fill="black" rx="0.06" />
+                    </mask>
+                </defs>
+            </svg>
         </div>
     );
 }
