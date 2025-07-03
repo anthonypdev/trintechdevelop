@@ -1,6 +1,6 @@
 // SpectroButton component
 
-const SpectroButton = () => {
+window.SpectroButton = () => {
   return (
     <>
       <div className="grain-overlay" />
@@ -97,4 +97,3 @@ const SpectroButton = () => {
   );
 };
 
-export default SpectroButton;

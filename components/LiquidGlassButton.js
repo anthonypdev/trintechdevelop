@@ -4,7 +4,7 @@
  * A reusable button styled using the LiquidGlass visual system.
  * Supports label, click handler, and optional inline styles.
  */
-const LiquidGlassButton = ({ label = 'Click Me', onClick, style = {}, className = '' }) => {
+window.LiquidGlassButton = ({ label = 'Click Me', onClick, style = {}, className = '' }) => {
   return (
     <button
       className={`liquid-button ${className}`}
@@ -16,4 +16,3 @@ const LiquidGlassButton = ({ label = 'Click Me', onClick, style = {}, className 
   );
 };
 
-export default LiquidGlassButton;

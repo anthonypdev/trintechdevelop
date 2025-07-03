@@ -1,6 +1,6 @@
 const { useState } = React;
 
-const ContentModal = ({ isOpen, onClose }) => {
+window.ContentModal = ({ isOpen, onClose }) => {
   const [activeSection, setActiveSection] = useState('home');
 
   if (!isOpen) return null;
@@ -108,4 +108,3 @@ const ContentModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default ContentModal;

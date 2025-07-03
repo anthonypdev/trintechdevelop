@@ -1,7 +1,7 @@
 const { useEffect } = React;
 
 // React component for the WebGL shader background
-const ShaderBackground = ({ canvasRef }) => {
+window.ShaderBackground = ({ canvasRef }) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -180,4 +180,3 @@ const ShaderBackground = ({ canvasRef }) => {
   }} />;
 };
 
-export default ShaderBackground;

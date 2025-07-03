@@ -1,6 +1,6 @@
 const { useRef, useEffect } = React;
 
-const NoiseOverlay = ({ sourceCanvasRef }) => {
+window.NoiseOverlay = ({ sourceCanvasRef }) => {
   const overlayCanvasRef = useRef(null);
   const animationFrameId = useRef(null);
 
@@ -179,4 +179,3 @@ const NoiseOverlay = ({ sourceCanvasRef }) => {
   }} />;
 };
 
-export default NoiseOverlay;

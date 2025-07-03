@@ -1,4 +1,5 @@
 const { useRef, useState } = React;
+const { ShaderBackground, NoiseOverlay, LiquidGlassButton, SpectroButton, ContentModal } = window;
 
 function App() {
     const shaderCanvasRef = useRef(null);
