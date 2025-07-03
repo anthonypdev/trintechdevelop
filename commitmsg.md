@@ -1,30 +1,28 @@
 # Commit Message Log
 
-## Latest Changes: Enhance Header Logo and Navigation UX
+## Latest Changes: Fix Header Dimensions and Add Corner Logo
 
 ### Changes Made:
-- **Header logo size**: Increased Trinity AI logo from 42px to 210px height (5x increase) for better visibility and brand presence
-- **Navigation container**: Updated nav container height from 60px to 230px to accommodate larger logo
-- **Smooth scroll behavior**: Added navbar scroll effect that shrinks logo to 60px and container to 80px when scrolling (matches old site behavior)
-- **Layout adjustments**: Updated content margin-top from 92px to 262px to accommodate larger header
-- **Button functionality**: Changed SpectroButton from button to anchor link pointing to #contact section for proper navigation
-- **Navigation animations**: Added smooth transitions and scroll-based styling changes for professional UX
+- **Header dimensions**: Restored navigation container to proper old site dimensions (60px height, shrinks to 45px on scroll)
+- **Navigation logo**: Returned nav logo to proper size (42px, shrinks to 32px on scroll) matching old site
+- **Corner logo**: Added separate large Trinity AI logo (210px) positioned in top-left corner, independent of navigation
+- **Scroll behavior**: Corner logo shrinks to 120px on scroll, maintains visual hierarchy
+- **Layout restoration**: Content margin-top back to 92px to match old site spacing
+- **Z-index management**: Corner logo at z-index 101 to sit above navigation but below modals
 
 ### Files Modified:
-- `/workspaces/trintechdevelop/styles.css` - Logo sizing, nav container height, scroll effects, and responsive styling
-- `/workspaces/trintechdevelop/components/SpectroButton.js` - Changed to anchor link with #contact target
-- `/workspaces/trintechdevelop/components/App.js` - Added navbar scroll effect JavaScript
+- `/workspaces/trintechdevelop/styles.css` - Header dimensions, corner logo styling, scroll effects
+- `/workspaces/trintechdevelop/components/App.js` - Added corner logo element and scroll behavior
 
 ### Commit Message:
 ```
-feat: enhance header with 5x larger logo and smooth navigation
+fix: restore proper header dimensions with separate corner logo
 
-- Increase Trinity AI logo from 42px to 210px for stronger brand presence
-- Add responsive navbar that shrinks on scroll (230px -> 80px container height)
-- Implement smooth scroll effect matching old site navigation behavior
-- Convert "Get Started" button to proper anchor link targeting contact section
-- Update layout spacing to accommodate larger header (262px margin-top)
-- Add professional navigation animations and transitions
+- Restore navigation to old site dimensions (60px container, 42px logo)
+- Add independent corner logo (210px) that sits in top-left corner
+- Implement smooth scroll effects for both nav and corner logo
+- Maintain proper visual hierarchy and spacing from old site design
+- Fix content margin-top to match original layout (92px)
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 

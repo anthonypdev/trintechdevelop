@@ -68,11 +68,11 @@ html, body, #root, .App {
 }
 
 .nav.scrolled .nav-container {
-    height: 80px;
+    height: 45px;
 }
 
 .nav.scrolled .nav-logo-image {
-    height: 60px;
+    height: 32px;
 }
 
 /* The ::after pseudo-element for final overlay effect */
@@ -93,7 +93,7 @@ html, body, #root, .App {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 230px;
+    height: 60px;
     position: relative;
     z-index: 1;
 }
@@ -117,7 +117,7 @@ html, body, #root, .App {
 }
 
 .nav-logo-image {
-    height: 210px;
+    height: 42px;
     width: auto;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -190,13 +190,33 @@ html, body, #root, .App {
     50% { opacity: 0.8; transform: scale(1.1); }
 }
 
+/* Corner Logo */
+.corner-logo {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 101;
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.corner-logo-image {
+    height: 210px;
+    width: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.corner-logo.scrolled .corner-logo-image {
+    height: 120px;
+}
+
 /* Main content container */
 .content {
     position: relative;
     z-index: 1;
     padding: 2rem;
     text-align: center;
-    margin-top: 262px;
+    margin-top: 92px;
 }
 
 main {

@@ -8,6 +8,11 @@ function App() {
         <div className="App">
             <ShaderBackground canvasRef={shaderCanvasRef} />
             
+            {/* Large corner logo */}
+            <div className="corner-logo">
+                <img src="/assets/trintechalpha.png" alt="TrinityAi" className="corner-logo-image" />
+            </div>
+            
             <nav className="nav" id="nav">
                 <div className="container">
                     <div className="nav-container">
@@ -131,13 +136,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar scroll effect
+    // Navbar and corner logo scroll effect
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('.nav');
+        const cornerLogo = document.querySelector('.corner-logo');
         if (window.scrollY > 100) {
             nav.classList.add('scrolled');
+            cornerLogo.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
+            cornerLogo.classList.remove('scrolled');
         }
     });
 });
