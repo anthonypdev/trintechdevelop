@@ -4,27 +4,17 @@ window.SpectroButton = () => {
   return (
     <>
       <div className="grain-overlay" />
-      <button className="spectro-button" />
+      <button className="spectro-button">Get Started</button>
       <style>{`
-        :root {
-          --m: 4rem;
-          --red: #FF6565;
-          --pink: #FF64F9;
-          --purple: #6B5FFF;
-          --blue: #4D8AFF;
-          --green: #5BFF89;
-          --yellow: #FFEE55;
-          --orange: #FF6D1B;
-        }
-
         .spectro-button {
           border: 1px solid rgba(255, 255, 255, 0.15);
           position: relative;
-          color: transparent;
-          font-family: 'Space Grotesk', sans-serif;
-          font-size: var(--m);
-          border-radius: calc(0.7 * var(--m));
-          padding: calc(0.5 * var(--m)) calc(1 * var(--m));
+          color: #ffffff;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 12px;
+          padding: 10px 22px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -33,7 +23,7 @@ window.SpectroButton = () => {
             linear-gradient(to top, rgba(255,255,255,0.06) 0%, transparent 35%),
             linear-gradient(#121213, #121213),
             linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)),
-            linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
+            linear-gradient(90deg, #FF6D1B, #FFEE55, #5BFF89, #4D8AFF, #6B5FFF, #FF64F9, #FF6565);
           background-origin: border-box;
           background-clip: padding-box, border-box, border-box, border-box;
           background-size: 200%;
@@ -45,13 +35,13 @@ window.SpectroButton = () => {
 
         .spectro-button::before {
           content: '';
-          background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
+          background: linear-gradient(90deg, #FF6D1B, #FFEE55, #5BFF89, #4D8AFF, #6B5FFF, #FF64F9, #FF6565);
           position: absolute;
           top: -0.15rem;
           left: -0.15rem;
           right: -0.15rem;
           bottom: -0.15rem;
-          border-radius: calc(0.7 * var(--m) + 0.15rem);
+          border-radius: 15px;
           z-index: -1;
           background-size: 200%;
           animation: animate 2s infinite linear;
@@ -87,11 +77,6 @@ window.SpectroButton = () => {
           }
         }
 
-        @media screen and (max-width: 1000px) {
-          :root {
-            --m: 2rem;
-          }
-        }
       `}</style>
     </>
   );

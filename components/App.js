@@ -1,5 +1,5 @@
 const { useRef, useState } = React;
-const { ShaderBackground, NoiseOverlay, LiquidGlassButton, SpectroButton, ContentModal } = window;
+const { ShaderBackground, LiquidGlassButton, SpectroButton, ContentModal } = window;
 
 function App() {
     const shaderCanvasRef = useRef(null);
@@ -8,7 +8,6 @@ function App() {
     return (
         <div className="App">
             <ShaderBackground canvasRef={shaderCanvasRef} />
-            <NoiseOverlay sourceCanvasRef={shaderCanvasRef} />
             
             <nav className="nav" id="nav">
                 <div className="container">
