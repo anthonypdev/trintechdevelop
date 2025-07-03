@@ -32,6 +32,7 @@ function App() {
             <main className="content">
                 <section className="hero">
                     <div className="container">
+                        <img src="/assets/trintechalpha.png" alt="TrinityAi" className="hero-logo" />
                         <h1>Welcome to TrinityAi</h1>
                         <p>The future of artificial intelligence</p>
                     </div>

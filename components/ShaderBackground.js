@@ -88,13 +88,11 @@ window.ShaderBackground = ({ canvasRef }) => {
         vec3 bloom_color = base_color * bloom_factor * 0.4;
         vec3 final_color = base_color + bloom_color;
         
-        // This mixes the result with a mid-gray to prevent harsh extremes.
-        final_color = mix(final_color, vec3(0.5), 0.3);
+        // Reduce gray mixing to make background brighter
+        final_color = mix(final_color, vec3(0.5), 0.1);
 
-        // Blend with a dark gray color
-        vec3 dark_color = vec3(0.08);
-        final_color=mix(dark_color, final_color, min(time*.1,1.));
-        final_color=clamp(final_color, 0.08, 1.0);
+        // Remove dark overlay - keep natural brightness
+        final_color=clamp(final_color, 0.0, 1.0);
         O=vec4(final_color,1);
       }
     `;
