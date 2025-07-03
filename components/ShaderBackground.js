@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+const { useEffect } = React;
 
 // React component for the WebGL shader background
 const ShaderBackground = ({ canvasRef }) => {

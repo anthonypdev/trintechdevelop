@@ -1,30 +1,33 @@
-import React, { useRef } from 'react';
-import ShaderBackground from './ShaderBackground.js';
-import NoiseOverlay from './NoiseOverlay.js';
-import LiquidGlassButton from './LiquidGlassButton.js';
-import SpectroButton from './SpectroButton.js';
+const { useRef, useState } = React;
 
 function App() {
     const shaderCanvasRef = useRef(null);
+    const [modalOpen, setModalOpen] = useState(false);
 
     return (
         <div className="App">
             <ShaderBackground canvasRef={shaderCanvasRef} />
             <NoiseOverlay sourceCanvasRef={shaderCanvasRef} />
             
-            <header className="main-header">
-                <div className="header-content">
-                    <div className="brand">
-                        <h1>TrinityAi</h1>
+            <nav className="nav" id="nav">
+                <div className="container">
+                    <div className="nav-container">
+                        <a href="#" className="nav-logo">
+                            <img src="/assets/trintechalpha.png" alt="TrinityAi" className="nav-logo-image" />
+                        </a>
+
+                        <ul className="nav-menu">
+                            <li><LiquidGlassButton label="Home" onClick={() => setModalOpen(true)} /></li>
+                            <li><LiquidGlassButton label="Products" onClick={() => setModalOpen(true)} /></li>
+                            <li><LiquidGlassButton label="About" onClick={() => setModalOpen(true)} /></li>
+                        </ul>
+
+                        <div onClick={() => document.getElementById('bottom').scrollIntoView({ behavior: 'smooth' })}>
+                            <SpectroButton />
+                        </div>
                     </div>
-                    <nav className="nav-buttons">
-                        <LiquidGlassButton label="Products" onClick={() => console.log('Products')} />
-                        <LiquidGlassButton label="Solutions" onClick={() => console.log('Solutions')} />
-                        <LiquidGlassButton label="About" onClick={() => console.log('About')} />
-                        <SpectroButton />
-                    </nav>
                 </div>
-            </header>
+            </nav>
             
             <main className="content">
                 <section className="hero">
@@ -33,7 +36,15 @@ function App() {
                         <p>The future of artificial intelligence</p>
                     </div>
                 </section>
+                <div id="bottom" style={{height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <h2 style={{color: 'white'}}>Coming Soon...</h2>
+                </div>
             </main>
+            
+            <ContentModal 
+                isOpen={modalOpen} 
+                onClose={() => setModalOpen(false)} 
+            />
         </div>
     );
 }

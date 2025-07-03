@@ -1,5 +1,4 @@
-import React from 'react';
-import './LiquidGlass.css'; // Shared styling system with header
+// Shared styling system with header
 
 /**
  * A reusable button styled using the LiquidGlass visual system.

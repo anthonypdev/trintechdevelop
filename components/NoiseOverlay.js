@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+const { useRef, useEffect } = React;
 
 const NoiseOverlay = ({ sourceCanvasRef }) => {
   const overlayCanvasRef = useRef(null);

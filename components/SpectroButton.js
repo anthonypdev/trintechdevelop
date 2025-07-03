@@ -1,4 +1,4 @@
-import React from 'react';
+// SpectroButton component
 
 const SpectroButton = () => {
   return (
