@@ -27,7 +27,7 @@ html, body, #root, .App {
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     
     /* Core filter for distortion and color enhancement */
     backdrop-filter: blur(14px) brightness(1.2) contrast(1.2) saturate(180%);
@@ -69,7 +69,7 @@ html, body, #root, .App {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 45px;
+    height: 60px;
     position: relative;
     z-index: 1;
 }
@@ -93,7 +93,7 @@ html, body, #root, .App {
 }
 
 .nav-logo-image {
-    height: 32px;
+    height: 42px;
     width: auto;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -117,13 +117,62 @@ html, body, #root, .App {
         0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.nav-link {
+    display: block;
+    padding: 0.625rem 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+}
+
+/* CSS Variables for CTA effects */
+:root {
+    --shadow-elevated: 
+        0 4px 8px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.15),
+        0 16px 32px rgba(0, 0, 0, 0.15),
+        0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA Pulse Animation */
+@keyframes ctaPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
 /* Main content container */
 .content {
     position: relative;
     z-index: 1;
     padding: 2rem;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 92px;
 }
 
 main {

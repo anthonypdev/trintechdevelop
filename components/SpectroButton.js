@@ -11,10 +11,10 @@ window.SpectroButton = () => {
           position: relative;
           color: #ffffff;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          font-size: 14px;
+          font-size: 1rem;
           font-weight: 600;
-          border-radius: 12px;
-          padding: 10px 22px;
+          border-radius: 16px;
+          padding: 1rem 2rem;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -41,7 +41,7 @@ window.SpectroButton = () => {
           left: -0.15rem;
           right: -0.15rem;
           bottom: -0.15rem;
-          border-radius: 15px;
+          border-radius: 19px;
           z-index: -1;
           background-size: 200%;
           animation: animate 2s infinite linear;
