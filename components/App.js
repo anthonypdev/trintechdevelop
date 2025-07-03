@@ -24,7 +24,7 @@ function App() {
                             </div>
                         </ul>
 
-                        <div onClick={() => document.getElementById('bottom').scrollIntoView({ behavior: 'smooth' })}>
+                        <div onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
                             <SpectroButton />
                         </div>
                     </div>
@@ -34,26 +34,28 @@ function App() {
             <main className="content">
                 <section className="hero" id="home">
                     <div className="container">
-                        <img src="/assets/trintechalpha.png" alt="TrinityAi" className="hero-logo" />
-                        <h1>Welcome to TrinityAi</h1>
-                        <p>The future of artificial intelligence</p>
+                        <div className="hero-content">
+                            <img src="/assets/trintechalpha.png" alt="TrinityAi" className="hero-logo" />
+                            <h1>Welcome to TrinityAi</h1>
+                            <p>The future of artificial intelligence</p>
+                        </div>
                     </div>
                 </section>
                 
-                <section className="section" id="products" style={{padding: '6rem 0', textAlign: 'center'}}>
+                <section className="section reveal" id="products" style={{padding: '6rem 0', textAlign: 'center'}}>
                     <div className="container">
                         <h2 style={{fontSize: '3rem', marginBottom: '2rem', color: 'white'}}>Our Products</h2>
                         <p style={{fontSize: '1.2rem', color: '#cccccc', marginBottom: '3rem'}}>Cutting-edge AI solutions designed to transform your business operations</p>
                         <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem'}}>
-                            <div style={{background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)'}}>
+                            <div className="reveal" style={{background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)'}}>
                                 <h3 style={{color: 'white', marginBottom: '1rem'}}>TrinityAI Insight Engine™</h3>
                                 <p style={{color: '#cccccc'}}>The Intelligent Search and Discovery Tool</p>
                             </div>
-                            <div style={{background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)'}}>
+                            <div className="reveal" style={{background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)'}}>
                                 <h3 style={{color: 'white', marginBottom: '1rem'}}>TrinityAI Conversational Front Desk™</h3>
                                 <p style={{color: '#cccccc'}}>The 24/7 AI-Powered Receptionist</p>
                             </div>
-                            <div style={{background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)'}}>
+                            <div className="reveal" style={{background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)'}}>
                                 <h3 style={{color: 'white', marginBottom: '1rem'}}>TrinityAI Companion™</h3>
                                 <p style={{color: '#cccccc'}}>The Personalized AI Partner for Your Workflow</p>
                             </div>
@@ -61,7 +63,7 @@ function App() {
                     </div>
                 </section>
                 
-                <section className="section" id="about" style={{padding: '6rem 0', textAlign: 'center'}}>
+                <section className="section reveal" id="about" style={{padding: '6rem 0', textAlign: 'center'}}>
                     <div className="container">
                         <h2 style={{fontSize: '3rem', marginBottom: '2rem', color: 'white'}}>About TrinityAI</h2>
                         <p style={{fontSize: '1.2rem', color: '#cccccc', maxWidth: '800px', margin: '0 auto', lineHeight: '1.8'}}>
@@ -70,17 +72,17 @@ function App() {
                     </div>
                 </section>
                 
-                <section className="section" id="portfolio" style={{padding: '6rem 0', textAlign: 'center'}}>
+                <section className="section reveal" id="portfolio" style={{padding: '6rem 0', textAlign: 'center'}}>
                     <div className="container">
                         <h2 style={{fontSize: '3rem', marginBottom: '2rem', color: 'white'}}>Portfolio</h2>
                         <p style={{fontSize: '1.2rem', color: '#cccccc', marginBottom: '3rem'}}>Our work speaks for itself</p>
-                        <div style={{height: '400px', background: 'rgba(255,255,255,0.05)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.1)'}}>
+                        <div className="reveal" style={{height: '400px', background: 'rgba(255,255,255,0.05)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.1)'}}>
                             <p style={{color: '#888', fontSize: '1.5rem'}}>Portfolio Coming Soon</p>
                         </div>
                     </div>
                 </section>
                 
-                <section className="section cta" id="contact" style={{padding: '6rem 0', textAlign: 'center', position: 'relative', overflow: 'hidden'}}>
+                <section className="section cta reveal" id="contact" style={{padding: '6rem 0', textAlign: 'center', position: 'relative', overflow: 'hidden'}}>
                     <div className="cta-background" style={{
                         position: 'absolute',
                         inset: 0,
@@ -101,9 +103,18 @@ function App() {
                                 <p style={{fontSize: '1.2rem', color: '#cccccc', marginBottom: '3rem'}}>
                                     Let's discuss how TrinityAI can help bridge the gap between your data and business outcomes.
                                 </p>
-                                <SpectroButton />
+                                <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center'}}>
+                                    <SpectroButton />
+                                    <p style={{fontSize: '0.9rem', color: '#888', marginTop: '1rem'}}>Contact us at: hello@trinityai.com</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </section>
+                
+                <section id="bottom" style={{padding: '2rem 0', textAlign: 'center'}}>
+                    <div className="container">
+                        <p style={{color: '#666', fontSize: '0.9rem'}}>&copy; 2024 TrinityAI. All rights reserved.</p>
                     </div>
                 </section>
             </main>
@@ -149,13 +160,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar scroll effect
+    // Navbar scroll effect with 100px threshold
     window.addEventListener('scroll', () => {
-        const nav = document.querySelector('.nav');
+        const nav = document.getElementById('nav');
         if (window.scrollY > 100) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
+    });
+    
+    // Intersection Observer for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 });
