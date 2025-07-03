@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TrinityAI - Bridging the gap between complex data and tangible business outcomes through bespoke AI solutions.">
+    <meta name="theme-color" content="#050505">
+    <title>TrinityAI - Bespoke AI Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Advanced Design System */
+        :root {
+            /* Depth-focused Color System */
+            --void: #050505;
+            --void-90: #0a0a0a;
+            --void-80: #0f0f0f;
+            --void-70: #151515;
+            --void-60: #1a1a1a;
+            --void-50: #202020;
+            --void-40: #2a2a2a;
+            --void-30: #353535;
+            --void-20: #404040;
+            --void-10: #505050;
+            
+            /* Light tones for contrast */
+            --light-100: #ffffff;
+            --light-90: #fafafa;
+            --light-80: #f5f5f5;
+            --light-70: #e5e5e5;
+            --light-60: #d4d4d4;
+            --light-50: #a3a3a3;
+            --light-40: #737373;
+            --light-30: #525252;
+            
+            /* Premium Accent System - Darker with more purple */
+            --accent-violet: #7c3aed;
+            --accent-blue: #2d4cdb;
+            --accent-cyan: #0891b2;
+            --accent-glow-violet: rgba(124, 58, 237, 0.2);
+            --accent-glow-blue: rgba(45, 76, 219, 0.2);
+            --accent-glow-cyan: rgba(8, 145, 178, 0.2);
+            
+            /* Multi-layer Gradients - Darker and more purple */
+            --gradient-premium: linear-gradient(135deg, #7c3aed 0%, #2d4cdb 50%, #0891b2 100%);
+            --gradient-depth: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.02) 0%, 
+                rgba(255, 255, 255, 0.01) 50%, 
+                rgba(255, 255, 255, 0.005) 100%);
+            --gradient-radial-glow: radial-gradient(ellipse at center, 
+                rgba(124, 58, 237, 0.15) 0%, 
+                rgba(45, 76, 219, 0.08) 30%, 
+                transparent 70%);
+            --gradient-mesh: 
+                radial-gradient(at 20% 80%, rgba(124, 58, 237, 0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(45, 76, 219, 0.15) 0px, transparent 50%),
+                radial-gradient(at 40% 40%, rgba(8, 145, 178, 0.1) 0px, transparent 50%);
+            
+            /* Typography - Clean Modern Stack */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            
+            /* Advanced Shadows for Depth */
+            --shadow-subtle: 
+                0 1px 2px rgba(0, 0, 0, 0.05),
+                0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-soft: 
+                0 2px 4px rgba(0, 0, 0, 0.1),
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+            --shadow-elevated: 
+                0 4px 8px rgba(0, 0, 0, 0.15),
+                0 8px 16px rgba(0, 0, 0, 0.15),
+                0 16px 32px rgba(0, 0, 0, 0.15),
+                0 24px 48px rgba(0, 0, 0, 0.1);
+            --shadow-floating: 
+                0 8px 16px rgba(0, 0, 0, 0.2),
+                0 16px 32px rgba(0, 0, 0, 0.2),
+                0 24px 48px rgba(0, 0, 0, 0.2),
+                0 32px 64px rgba(0, 0, 0, 0.15);
+            
+            /* Refined Animation Curves */
+            --ease-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            
+            /* Z-Index Layers */
+            --z-base: 1;
+            --z-elevated: 10;
+            --z-floating: 20;
+            --z-modal: 30;
+            --z-overlay: 40;
+            --z-nav: 100;
+            --z-highest: 1000;
+        }
+
+        /* Foundation */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "kern" 1;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--light-80);
+            background-color: var(--void);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Premium Background Layers */
+        .background-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .background-layer-1 {
+            z-index: -4;
+            background: var(--void);
+        }
+
+        .background-layer-2 {
+            z-index: -3;
+            background: var(--gradient-mesh);
+            opacity: 0.4;
+            animation: meshFloat 30s ease-in-out infinite;
+        }
+
+        @keyframes meshFloat {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(-30px, -30px) scale(1.1) rotate(1deg); }
+            66% { transform: translate(30px, -20px) scale(0.95) rotate(-1deg); }
+        }
+
+        .background-layer-3 {
+            z-index: -2;
+            background-image: 
+                repeating-linear-gradient(90deg, 
+                    transparent, 
+                    transparent 100px, 
+                    rgba(255, 255, 255, 0.01) 100px, 
+                    rgba(255, 255, 255, 0.01) 101px);
+            transform: perspective(1000px) rotateX(60deg) scale(2);
+            transform-origin: center bottom;
+            opacity: 0.5;
+        }
+
+        .background-layer-4 {
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+        }
+
+        /* Selection */
+        ::selection {
+            background-color: var(--accent-violet);
+            color: var(--light-100);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 14px;
+            height: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--void-80);
+            border: 1px solid var(--void-60);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--void-30) 0%, var(--void-40) 100%);
+            border-radius: 8px;
+            border: 2px solid var(--void-80);
+            box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--void-20) 0%, var(--void-30) 100%);
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        /* Navigation - Premium Glass Elevation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-nav);
+            padding: 1rem 0;
+            transition: all 0.4s var(--ease-smooth);
+        }
+
+        .nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: -1;
+        }
+
+        .nav.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .nav.scrolled::before {
+            background: rgba(5, 5, 5, 0.85);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--light-100);
+            font-weight: 700;
+            font-size: 1.375rem;
+            letter-spacing: -0.025em;
+            transition: all 0.3s var(--ease-smooth);
+            position: relative;
+            z-index: var(--z-elevated);
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-1px);
+        }
+
+        .nav-logo-mark {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-premium);
+            border-radius: 14px;
+            position: relative;
+            box-shadow: 
+                var(--shadow-soft),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
+            transform: perspective(500px) rotateX(10deg);
+            transition: all 0.3s var(--ease-smooth);
+            overflow: hidden;
+        }
+
+        /* Subtle texture for logo */
+        .nav-logo-mark::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+            opacity: 0.5;
+        }
+
+        .nav-logo:hover .nav-logo-mark {
+            transform: perspective(500px) rotateX(10deg) scale(1.05);
+            box-shadow: 
+                var(--shadow-elevated),
+                inset 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-logo-mark::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 
+                inset 0 1px 2px rgba(255, 255, 255, 0.05),
+                0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.625rem 1.25rem;
+            color: var(--light-50);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.3s var(--ease-smooth);
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.05) 0%, 
+                rgba(255, 255, 255, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-smooth);
+        }
+
+        .nav-link:hover {
+            color: var(--light-100);
+            transform: translateY(-1px);
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        /* Unified button styling with subtle texture */
+        .nav-cta {
+            padding: 0.75rem 1.75rem;
+            background: var(--gradient-premium);
+            color: var(--light-100);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border-radius: 14px;
+            transition: all 0.3s var(--ease-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 
+                0 2px 8px rgba(124, 58, 237, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Enhanced Button with unified texture */
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .nav-cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s var(--ease-smooth);
+            z-index: 2;
+        }
+
+        .nav-cta span {
+            position: relative;
+            z-index: 3;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 
+                0 4px 12px rgba(124, 58, 237, 0.3),
+                inset 0 1px 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-cta:hover::after {
+            transform: translateX(0);
+        }
+
+        /* Hero Section - Multi-layered Depth */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--void) 0%, var(--void-90) 100%);
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-layer-grid {
+            background-image: 
+                linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            transform: perspective(1000px) rotateX(60deg) scale(2);
+            transform-origin: center center;
+            opacity: 0.5;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            from { transform: perspective(1000px) rotateX(60deg) scale(2) translateZ(0); }
+            to { transform: perspective(1000px) rotateX(60deg) scale(2) translateZ(100px); }
+        }
+
+        .hero-layer-orbs {
+            z-index: 1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-violet) 0%, transparent 70%);
+            top: -300px;
+            left: -300px;
+            opacity: 0.3;
+        }
+
+        .orb-2 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            bottom: -400px;
+            right: -400px;
+            opacity: 0.2;
+            animation-delay: -10s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.15;
+            animation-delay: -5s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+            padding: 2rem;
+            background: rgba(5, 5, 5, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 
+                var(--shadow-floating),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title-text {
+            background: linear-gradient(180deg, 
+                var(--light-100) 0%, 
+                var(--light-100) 40%, 
+                var(--light-50) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: var(--light-50);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Premium 3D Buttons with unified texture and subtle shadows */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 16px;
+            transition: all 0.3s var(--ease-smooth);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.02em;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+            opacity: 0.4;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s var(--ease-smooth);
+            border-radius: 16px;
+            z-index: 2;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 3;
+        }
+
+        .btn-primary {
+            background: var(--gradient-premium);
+            color: var(--light-100);
+            box-shadow: 
+                0 2px 8px rgba(124, 58, 237, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 
+                0 4px 12px rgba(124, 58, 237, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover::after {
+            transform: translateX(0);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.04) 100%);
+            color: var(--light-100);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.12) 0%, 
+                rgba(255, 255, 255, 0.06) 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover::after {
+            transform: translateX(0);
+        }
+
+        /* Sections */
+        .section {
+            position: relative;
+            padding: 6rem 0;
+            z-index: var(--z-base);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--light-100);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-premium);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--light-50);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Products Section - Elevated Cards */
+        .products {
+            background: linear-gradient(180deg, var(--void-90) 0%, var(--void-80) 100%);
+            position: relative;
+        }
+
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(124, 58, 237, 0.3) 50%, 
+                transparent 100%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.05) 0%, 
+                rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-smooth);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transform: translateZ(0);
+            box-shadow: 
+                var(--shadow-elevated),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-premium);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease-smooth);
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle at var(--mouse-x) var(--mouse-y), 
+                rgba(124, 58, 237, 0.1) 0%, 
+                transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.04) 100%);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 
+                var(--shadow-floating),
+                inset 0 1px 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
+        .product-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.2) 0%, 
+                rgba(45, 76, 219, 0.1) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            box-shadow: 
+                var(--shadow-soft),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s var(--ease-smooth);
+            overflow: hidden;
+        }
+
+        /* Unified texture for product icons */
+        .product-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+            opacity: 0.4;
+        }
+
+        .product-card:hover .product-icon {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 
+                var(--shadow-elevated),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--light-100);
+            letter-spacing: -0.02em;
+        }
+
+        .product-tagline {
+            font-size: 0.9375rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .product-description {
+            color: var(--light-50);
+            line-height: 1.8;
+            font-size: 0.9375rem;
+        }
+
+        /* About Section */
+        .about {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--void-80) 0%, var(--void-90) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .about-text {
+            color: var(--light-50);
+            line-height: 1.8;
+            font-size: 1.125rem;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                var(--shadow-soft),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+        }
+
+        .about-visual {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.1) 0%, 
+                rgba(45, 76, 219, 0.05) 50%,
+                rgba(8, 145, 178, 0.1) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                var(--shadow-elevated),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: all 0.4s var(--ease-smooth);
+        }
+
+        /* Unified texture for about visual */
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+            opacity: 0.3;
+        }
+
+        .about-visual:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+            box-shadow: 
+                var(--shadow-floating),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: linear-gradient(180deg, var(--void-90) 0%, var(--void) 100%);
+            position: relative;
+        }
+
+        .portfolio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(45, 76, 219, 0.3) 50%, 
+                transparent 100%);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .portfolio-item {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.03) 0%, 
+                rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-smooth);
+            cursor: pointer;
+            position: relative;
+            height: 500px;
+            box-shadow: 
+                var(--shadow-elevated),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+            transform: translateZ(0);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(45, 76, 219, 0.3);
+            box-shadow: 
+                var(--shadow-floating),
+                inset 0 1px 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--void-60) 0%, var(--void-40) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-40);
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-background {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, 
+                rgba(124, 58, 237, 0.15) 0%, 
+                transparent 60%);
+            animation: ctaPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(5, 5, 5, 0.3);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                var(--shadow-elevated),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--void);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            text-align: center;
+            color: var(--light-40);
+            font-size: 0.9375rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu, .nav-cta {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s var(--ease-out-expo);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Multi-layer Background -->
+    <div class="background-layer background-layer-1"></div>
+    <div class="background-layer background-layer-2"></div>
+    <div class="background-layer background-layer-3"></div>
+    <div class="background-layer background-layer-4"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">
+                    <div class="nav-logo-mark"></div>
+                    <span>TrinityAI</span>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                </ul>
+
+                <a href="#contact" class="nav-cta"><span>Get Started</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-layer hero-layer-grid"></div>
+            <div class="hero-layer hero-layer-orbs">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title-text">TrinityAI</span>
+                </h1>
+                <p class="hero-subtitle">
+                    At TrinityAI, we bridge the gap between complex data and tangible business outcomes. We are a dedicated team of AI specialists, data scientists, and full-stack engineers committed to developing bespoke Artificial Intelligence, Machine Learning, and Deep Learning solutions.
+                </p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary"><span>Explore Solutions</span></a>
+                    <a href="#contact" class="btn btn-secondary"><span>Get Started</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Our Products</h2>
+                <p class="section-description">
+                    Cutting-edge AI solutions designed to transform your business operations
+                </p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card reveal">
+                    <div class="product-icon">🔍</div>
+                    <h3 class="product-name">TrinityAI Insight Engine™</h3>
+                    <p class="product-tagline">The Intelligent Search and Discovery Tool</p>
+                    <p class="product-description">
+                        The Insight Engine is a secure, lightweight interface that connects directly to your organization's private data—be it legal case files, medical research, or internal knowledge bases. It acts as an expert assistant, allowing your team to ask complex questions in plain language and get precise answers instantly. Instead of spending hours manually searching through thousands of documents, the Insight Engine finds the exact clause, patient history, or critical piece of information you need in seconds.
+                    </p>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="product-icon">💬</div>
+                    <h3 class="product-name">TrinityAI Conversational Front Desk™</h3>
+                    <p class="product-tagline">The 24/7 AI-Powered Receptionist for Voice and Web</p>
+                    <p class="product-description">
+                        The Conversational Front Desk offers your clients a seamless and professional first point of contact, anytime. This AI-powered receptionist handles incoming phone calls and website chats with stunningly low latency and human-like responsiveness. It can answer common questions, schedule appointments directly into your calendar, route complex inquiries to the right personnel, and take detailed messages.
+                    </p>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="product-icon">🤝</div>
+                    <h3 class="product-name">TrinityAI Companion™</h3>
+                    <p class="product-tagline">The Personalized AI Partner for Your Workflow</p>
+                    <p class="product-description">
+                        The TrinityAI Companion is a dynamic conversational agent designed to be a user's dedicated, intelligent partner. Accessible via web browser, phone call, or directly within Microsoft Teams, it seamlessly integrates with your existing tools. What sets the Companion apart is its persistent memory; it learns from every interaction, remembering user preferences and project details.
+                    </p>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="product-icon">⚙️</div>
+                    <h3 class="product-name">TrinityAI Workflow Automation Engine™</h3>
+                    <p class="product-tagline">Custom AI Models for Secure, Offline Operations</p>
+                    <p class="product-description">
+                        The Workflow Automation Engine is our premier solution for businesses that require absolute data privacy and operational independence. We design and build a custom Large Language Model (LLM) that runs entirely on your local, offline systems. This engine integrates directly into your unique workflows to automate complex and routine tasks—from drafting initial legal documents to summarizing medical records.
+                    </p>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="product-icon">📄</div>
+                    <h3 class="product-name">TrinityAI Document Analyst™</h3>
+                    <p class="product-tagline">AI-Powered Document Review and Analysis</p>
+                    <p class="product-description">
+                        The Document Analyst is a specialized tool designed to accelerate the tedious process of high-volume document review. Ideal for legal due diligence, medical record analysis, or contract management, this product intelligently scans and analyzes vast quantities of text. It can quickly identify risks, flag non-standard clauses, summarize key points, and verify information across thousands of pages.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">About TrinityAI</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p>
+                        We don't just build models; we build partnerships. By integrating seamlessly with your team, we analyze your unique challenges and opportunities to deliver robust, scalable, and fully-managed AI systems. From intelligent automation to predictive analytics, TrinityAI empowers your business to operate with greater insight, speed, and competitive advantage in a data-driven world.
+                    </p>
+                </div>
+                <div class="about-visual reveal">
+                    <div class="about-visual-content" style="position: relative; z-index: 2;">
+                        <h3 style="font-size: 2rem; color: var(--light-100); margin-bottom: 1rem;">Building AI Partnerships</h3>
+                        <p style="color: var(--light-50); font-size: 1.125rem;">Transforming businesses through intelligent solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Portfolio</h2>
+                <p class="section-description">
+                    Our work speaks for itself
+                </p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        4K Image Placeholder
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        4K Image Placeholder
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        4K Image Placeholder
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        4K Image Placeholder
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta" id="contact">
+        <div class="cta-background"></div>
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="section-title">Ready to Transform Your Business?</h2>
+                <p class="section-description">
+                    Let's discuss how TrinityAI can help bridge the gap between your data and business outcomes.
+                </p>
+                <a href="#" class="btn btn-primary"><span>Schedule a Consultation</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2024 TrinityAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Product card mouse effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>

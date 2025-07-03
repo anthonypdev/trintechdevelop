@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
 // React component for the WebGL shader background
-const ShaderBackground = () => {
-  const canvasRef = useRef(null);
+const ShaderBackground = ({ canvasRef }) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -175,9 +174,9 @@ const ShaderBackground = () => {
     position: 'fixed', 
     top: 0, 
     left: 0, 
-    width: '100%', 
-    height: '100%', 
-    zIndex: -1 
+    width: '100vw', 
+    height: '100vh', 
+    zIndex: -2 
   }} />;
 };
 

@@ -1,59 +1,40 @@
-const { useState } = React;
+import React, { useRef } from 'react';
+import ShaderBackground from './ShaderBackground.js';
+import NoiseOverlay from './NoiseOverlay.js';
+import LiquidGlassButton from './LiquidGlassButton.js';
+import SpectroButton from './SpectroButton.js';
 
 function App() {
+    const shaderCanvasRef = useRef(null);
+
     return (
-        <div>
-            <Header />
-            <Hero />
-            <About />
-            <Contact />
+        <div className="App">
+            <ShaderBackground canvasRef={shaderCanvasRef} />
+            <NoiseOverlay sourceCanvasRef={shaderCanvasRef} />
+            
+            <header className="main-header">
+                <div className="header-content">
+                    <div className="brand">
+                        <h1>TrinityAi</h1>
+                    </div>
+                    <nav className="nav-buttons">
+                        <LiquidGlassButton label="Products" onClick={() => console.log('Products')} />
+                        <LiquidGlassButton label="Solutions" onClick={() => console.log('Solutions')} />
+                        <LiquidGlassButton label="About" onClick={() => console.log('About')} />
+                        <SpectroButton />
+                    </nav>
+                </div>
+            </header>
+            
+            <main className="content">
+                <section className="hero">
+                    <div className="container">
+                        <h1>Welcome to TrinityAi</h1>
+                        <p>The future of artificial intelligence</p>
+                    </div>
+                </section>
+            </main>
         </div>
-    );
-}
-
-function Header() {
-    return (
-        <header>
-            <div className="container">
-                <nav>
-                    <h2>Your Name</h2>
-                </nav>
-            </div>
-        </header>
-    );
-}
-
-function Hero() {
-    return (
-        <section className="hero">
-            <div className="container">
-                <h1>Welcome to My Website</h1>
-                <p>I'm a developer passionate about creating amazing experiences</p>
-                <a href="#contact" className="btn">Get In Touch</a>
-            </div>
-        </section>
-    );
-}
-
-function About() {
-    return (
-        <section id="about">
-            <div className="container">
-                <h2>About Me</h2>
-                <p>Tell your story here...</p>
-            </div>
-        </section>
-    );
-}
-
-function Contact() {
-    return (
-        <section id="contact">
-            <div className="container">
-                <h2>Contact</h2>
-                <p>Get in touch with me...</p>
-            </div>
-        </section>
     );
 }
 
