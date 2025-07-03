@@ -12,7 +12,7 @@ function App() {
                 <div className="container">
                     <div className="nav-container">
                         <a href="#" className="nav-logo">
-                            <img src="/assets/trintechalpha.png" alt="TrinityAi" className="nav-logo-image" />
+                            <span>TrinityAI</span>
                         </a>
 
                         <ul className="nav-menu">

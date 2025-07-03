@@ -1,28 +1,27 @@
 # Commit Message Log
 
-## Latest Changes: Remove Duplicate Logo and Create Clipping Header Logo
+## Latest Changes: Replace Logo with Styled Text Matching Old Site
 
 ### Changes Made:
-- **Remove corner logo**: Eliminated separate corner logo element that was creating duplication
-- **Header logo enlargement**: Increased nav logo from 42px to 180px to create prominent branding
-- **Overflow handling**: Added `overflow: visible` to nav, nav-container, and nav-logo to allow logo to clip past header edges
-- **Scroll behavior**: Updated logo to shrink from 180px to 60px on scroll for better proportions
-- **Clean navigation**: Header no longer tries to wrap the large logo, allowing natural clipping effect
-- **JavaScript cleanup**: Removed corner logo references from scroll event handler
+- **Remove logo image**: Replaced img element with styled text "TrinityAI" in navigation header
+- **Text styling**: Applied old site typography approach with font-weight 700, 1.375rem size, and proper letter spacing
+- **Clean navigation**: Removed overflow properties and image-specific scroll effects
+- **Simplified header**: Navigation now uses clean text-based branding matching old site design
+- **Consistent styling**: Maintains hover effects and transitions for professional UX
 
 ### Files Modified:
-- `/workspaces/trintechdevelop/components/App.js` - Removed corner logo element and JavaScript references
-- `/workspaces/trintechdevelop/styles.css` - Removed corner logo CSS, enlarged header logo, added overflow handling
+- `/workspaces/trintechdevelop/components/App.js` - Replaced img element with span containing "TrinityAI" text
+- `/workspaces/trintechdevelop/styles.css` - Removed image-specific CSS, cleaned up overflow properties
 
 ### Commit Message:
 ```
-fix: remove duplicate logo and create clipping header logo
+feat: replace logo with styled text matching old site approach
 
-- Remove separate corner logo element causing duplication
-- Enlarge header logo to 180px (shrinks to 60px on scroll)  
-- Add overflow: visible to navigation elements for natural logo clipping
-- Clean up JavaScript to remove corner logo scroll handling
-- Header now displays single large logo that clips past edges elegantly
+- Remove logo image and replace with "TrinityAI" text in navigation
+- Apply old site typography styling (700 weight, 1.375rem, proper spacing)
+- Clean up image-specific CSS and overflow properties
+- Maintain hover effects and smooth transitions
+- Header now uses clean text-based branding approach
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 

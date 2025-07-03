@@ -28,7 +28,6 @@ html, body, #root, .App {
     right: 0;
     z-index: 100;
     padding: 1rem 0;
-    overflow: visible;
     
     /* Core filter for distortion and color enhancement */
     backdrop-filter: blur(14px) brightness(1.2) contrast(1.2) saturate(180%);
@@ -72,9 +71,6 @@ html, body, #root, .App {
     height: 45px;
 }
 
-.nav.scrolled .nav-logo-image {
-    height: 60px;
-}
 
 /* The ::after pseudo-element for final overlay effect */
 .nav::after {
@@ -97,7 +93,6 @@ html, body, #root, .App {
     height: 60px;
     position: relative;
     z-index: 1;
-    overflow: visible;
 }
 
 .nav-logo {
@@ -112,22 +107,10 @@ html, body, #root, .App {
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     position: relative;
     z-index: 10;
-    overflow: visible;
 }
 
 .nav-logo:hover {
     transform: translateY(-1px);
-}
-
-.nav-logo-image {
-    height: 180px;
-    width: auto;
-    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-}
-
-.nav-logo:hover .nav-logo-image {
-    transform: scale(1.05);
 }
 
 .nav-menu {
