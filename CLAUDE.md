@@ -68,3 +68,27 @@ Main content renders on top with transparency effects
 - **Layered Z-Index**: Background shader (-2), noise overlay (0), content (1)
 - **Glass Morphism**: Header uses backdrop-filter for modern glass effect
 - **Canvas Positioning**: Fixed positioning with 100vw/100vh for full-screen effects
+
+## Git Workflow Commands
+
+**IMPORTANT**: This project uses a special commit workflow system with `commitmsg.md` for tracking changes.
+
+### Special Commit Commands
+When the user says any of these phrases, perform the automated git workflow:
+- **"lets ball"**
+- **"esketit"** 
+- **"punch it"**
+
+**Automated Git Workflow**:
+1. Stage all changes: `git add .`
+2. Read commit message from `/workspaces/trintechdevelop/commitmsg.md`
+3. Commit using the contents of `commitmsg.md` as the commit message
+4. Push to remote: `git push`
+5. Clear `commitmsg.md` contents (overwrite with empty file)
+
+### Change Tracking
+**ALWAYS** update `commitmsg.md` when making any code changes:
+- Document what was changed and why
+- List modified files
+- Include properly formatted commit message
+- Use this format for consistent tracking across all development sessions

@@ -4,7 +4,7 @@ window.SpectroButton = () => {
   return (
     <>
       <div className="grain-overlay" />
-      <button className="spectro-button">Get Started</button>
+      <a href="#contact" className="spectro-button" style={{textDecoration: 'none', display: 'inline-flex'}}>Get Started</a>
       <style>{`
         .spectro-button {
           border: 1px solid rgba(255, 255, 255, 0.15);

@@ -51,6 +51,30 @@ html, body, #root, .App {
     transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
+.nav.scrolled {
+    padding: 0.75rem 0;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 0 0.5px rgba(255, 255, 255, 0.05);
+}
+
+.nav.scrolled::before {
+    background: 
+        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 4px);
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav.scrolled .nav-container {
+    height: 80px;
+}
+
+.nav.scrolled .nav-logo-image {
+    height: 60px;
+}
+
 /* The ::after pseudo-element for final overlay effect */
 .nav::after {
     content: "";
@@ -69,7 +93,7 @@ html, body, #root, .App {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    height: 230px;
     position: relative;
     z-index: 1;
 }
@@ -93,7 +117,7 @@ html, body, #root, .App {
 }
 
 .nav-logo-image {
-    height: 42px;
+    height: 210px;
     width: auto;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -172,7 +196,7 @@ html, body, #root, .App {
     z-index: 1;
     padding: 2rem;
     text-align: center;
-    margin-top: 92px;
+    margin-top: 262px;
 }
 
 main {
