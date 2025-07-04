@@ -1,15 +1,12 @@
 # Commit Message
 
-fix: resolve Netlify deployment issues with browser-based Babel transpilation
+fix: resolve duplicate useEffect declaration causing bundle syntax error
 
-The issue was that the site uses type="text/babel" scripts which require browser-based JSX transpilation. This often fails on production deployments like Netlify due to CORS, timing issues, or silent transpilation failures.
+Fixed the JavaScript syntax error where useEffect was being declared twice in the bundled components. Updated the build script to properly handle React hooks destructuring to avoid duplicates.
 
-Created a bundled version that combines all React components into a single file, reducing HTTP requests and potential loading issues while maintaining browser-based Babel transformation.
+Changes:
+- Modified build-simple.js to track React hooks imports and remove duplicates
+- Regenerated bundle-babel.js without duplicate declarations
+- Replaced index.html with fixed version
 
-To fix Netlify deployment:
-
-1. Use index-babel.html instead of index.html
-2. Or rename: mv index-babel.html index.html
-3. Ensure bundle-babel.js is included in deployment
-
-This maintains the same functionality while being more reliable for production deployments.
+The living room picture issue was identified as an unused Unsplash background image in LiquidGlass.css demo file - not affecting the main site.

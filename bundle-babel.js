@@ -1,4 +1,4 @@
-// TrinityAI Website Bundle - Generated on 2025-07-04T01:30:36.620Z
+// TrinityAI Website Bundle - Generated on 2025-07-04T01:38:51.885Z
 // This bundle requires Babel to be loaded in the browser for JSX transformation
 
 
@@ -187,8 +187,6 @@ window.ShaderBackground = ({ canvasRef }) => {
 
 
 // ==================== NoiseOverlay ====================
-const { useRef, useEffect } = React;
-
 window.NoiseOverlay = ({ sourceCanvasRef }) => {
   const overlayCanvasRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -477,8 +475,6 @@ window.SpectroButton = () => {
 
 
 // ==================== ContentModal ====================
-const { useState } = React;
-
 window.ContentModal = ({ isOpen, onClose }) => {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -591,7 +587,6 @@ window.ContentModal = ({ isOpen, onClose }) => {
 
 
 // ==================== App ====================
-const { useRef } = React;
 const { ShaderBackground, SpectroButton } = window;
 
 function App() {

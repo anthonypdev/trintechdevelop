@@ -24,14 +24,26 @@ let bundle = `// TrinityAI Website Bundle - Generated on ${new Date().toISOStrin
 
 `;
 
+// Track which React hooks have been imported to avoid duplicates
+let reactHooksImported = false;
+
 // Read and concatenate all components
 components.forEach(componentPath => {
     console.log(`Adding ${componentPath}...`);
     
     try {
         const fullPath = path.join(__dirname, componentPath);
-        const code = fs.readFileSync(fullPath, 'utf8');
+        let code = fs.readFileSync(fullPath, 'utf8');
         const componentName = path.basename(componentPath, '.js');
+        
+        // Fix React hooks destructuring to avoid duplicates
+        if (!reactHooksImported) {
+            // Keep the first React destructuring as-is
+            reactHooksImported = true;
+        } else {
+            // Remove React destructuring from subsequent components
+            code = code.replace(/const \{ [^}]+ \} = React;\s*\n/g, '');
+        }
         
         bundle += `
 // ==================== ${componentName} ====================
