@@ -69,8 +69,8 @@ html, body, #root, .App {
     box-shadow: inset 0 0 var(--lg-inset-glow-blur) var(--lg-inset-glow-spread) var(--lg-inset-glow-color);
     
     /* Inset blur effect */
-    backdrop-filter: blur(var(--lg-frost-blur)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--lg-frost-blur)) saturate(180%);
+    backdrop-filter: blur(var(--lg-frost-blur)) saturate(180%) brightness(1.1);
+    -webkit-backdrop-filter: blur(var(--lg-frost-blur)) saturate(180%) brightness(1.1);
 
     /* Mask to make the blur only apply to the edges */
     mask: url(#edge-blur-mask);
@@ -108,10 +108,14 @@ html, body, #root, .App {
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     z-index: var(--z-nav);
     padding: 1rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0px 8px var(--lg-drop-shadow-blur) rgba(0, 0, 0, 0.35);
+    box-shadow: 
+        0px 8px var(--lg-drop-shadow-blur) rgba(0, 0, 0, 0.35),
+        0px 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.1);
     transition: all 0.4s var(--ease-smooth);
 }
 
@@ -128,6 +132,9 @@ html, body, #root, .App {
     align-items: center;
     justify-content: space-between;
     height: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
     position: relative;
     z-index: 1;
 }
@@ -157,7 +164,11 @@ html, body, #root, .App {
     padding: 0.5rem;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0px 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
 }
 
 .nav-link {
@@ -227,6 +238,7 @@ html, body, #root, .App {
     position: relative;
     z-index: 1;
     padding: 2rem;
+    padding-top: 80px;
     text-align: center;
     margin-top: 0;
 }
@@ -242,7 +254,8 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0;
+    padding: 80px 0 0 0;
+    box-sizing: border-box;
 }
 
 .hero-content {
