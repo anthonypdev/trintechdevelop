@@ -5,7 +5,9 @@
       "Bash(ls:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(node build-simple.js)",
+      "Bash(mv:*)"
     ],
     "deny": []
   }
