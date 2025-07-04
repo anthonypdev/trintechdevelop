@@ -1,12 +1,8 @@
-# Commit Message
+fix: resolve useRef undefined error and remove living room background image
 
-fix: resolve duplicate useEffect declaration causing bundle syntax error
-
-Fixed the JavaScript syntax error where useEffect was being declared twice in the bundled components. Updated the build script to properly handle React hooks destructuring to avoid duplicates.
+Fixed JavaScript error where useRef was not properly imported in the bundle. Also removed the living room background image from LiquidGlass.css and replaced it with a gradient.
 
 Changes:
-- Modified build-simple.js to track React hooks imports and remove duplicates
-- Regenerated bundle-babel.js without duplicate declarations
-- Replaced index.html with fixed version
-
-The living room picture issue was identified as an unused Unsplash background image in LiquidGlass.css demo file - not affecting the main site.
+- Added useRef and useState to React imports in bundle-babel.js
+- Replaced Unsplash living room image with gradient background in LiquidGlass.css
+- This should resolve both the JavaScript error and the unwanted background image

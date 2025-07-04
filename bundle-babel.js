@@ -3,7 +3,7 @@
 
 
 // ==================== ShaderBackground ====================
-const { useEffect } = React;
+const { useEffect, useRef, useState } = React;
 
 // React component for the WebGL shader background
 window.ShaderBackground = ({ canvasRef }) => {
