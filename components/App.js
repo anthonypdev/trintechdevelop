@@ -18,9 +18,9 @@ function App() {
                         <ul className="nav-menu liquid-glass">
                             <div className="liquid-glass-content">
                                 <li><a href="#home" className="nav-link">Home</a></li>
-                                <li><a href="#products" className="nav-link">Products</a></li>
-                                <li><a href="#about" className="nav-link">About</a></li>
-                                <li><a href="#portfolio" className="nav-link">Portfolio</a></li>
+                                <li><a href="#products" className="nav-link">Forge</a></li>
+                                <li><a href="#about" className="nav-link">Taius</a></li>
+                                <li><a href="#portfolio" className="nav-link">MCP Hub</a></li>
                             </div>
                         </ul>
 
